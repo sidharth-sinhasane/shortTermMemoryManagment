@@ -34,25 +34,25 @@ class GraphState(TypedDict):
     context: dict[str, str]
 
 
-class azure_client:
-    def __init__(self):
-        self.llm = self._initialize_azure_client()
+# class azure_client:
+#     def __init__(self):
+#         self.llm = self._initialize_azure_client()
 
-    def _initialize_azure_client(self) -> AzureOpenAI:
+#     def _initialize_azure_client(self) -> AzureOpenAI:
        
 
-        # Azure OpenAI Configuration
-        AZURE_OPENAI_ENDPOINT="https://sanny-mini.openai.azure.com/"
-        AZURE_OPENAI_API_KEY="api"
-        AZURE_OPENAI_API_VERSION="2025-01-01-preview"
-        AZURE_OPENAI_DEPLOYMENT_NAME="gpt-4o-mini"
+#         # Azure OpenAI Configuration
+#         AZURE_OPENAI_ENDPOINT=os.getenv("AZURE_OPENAI_ENDPOINT")
+#         AZURE_OPENAI_API_KEY=os.getenv("AZURE_OPENAI_API_KEY")
+#         AZURE_OPENAI_API_VERSION=os.getenv("AZURE_OPENAI_API_VERSION")
+#         AZURE_OPENAI_DEPLOYMENT_NAME=os.getenv("AZURE_OPENAI_DEPLOYMENT_NAME")
 
-        client = AzureOpenAI(
-            api_key=AZURE_OPENAI_API_KEY,
-            api_version=AZURE_OPENAI_API_VERSION,
-            azure_endpoint=AZURE_OPENAI_ENDPOINT
-        )
-        return client
+#         client = AzureOpenAI(
+#             api_key=AZURE_OPENAI_API_KEY,
+#             api_version=AZURE_OPENAI_API_VERSION,
+#             azure_endpoint=AZURE_OPENAI_ENDPOINT
+#         )
+#         return client
 
 class redisClient:
     redis=None

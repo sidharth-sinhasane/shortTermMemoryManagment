@@ -39,13 +39,9 @@ def superviser_agent(state: GraphState)->GraphState:
 
     agent=create_react_agent(model=llm,tools=[])
     
-    #print(state["messages"])
     response= agent.invoke({"messages":state["messages"]})
-    # print("___________________ \n ", type(response["messages"][-1].content))
-    # print(response["messages"][-1].content)
 
     state["response"]=response["messages"][-1].content
-    # print("___________________ \n",state)
 
     return state
 
@@ -104,9 +100,7 @@ def main():
                     "permissions": "triage",
                     "team": "test_team",
                     "metadata": {}
-                },
-                # "userQuery": userinput,
-                # "query": userinput,                      
+                },                 
                 "response": "",
                 "next_action": "",
                 "cur_node": "",
@@ -119,9 +113,6 @@ def main():
         config = {"configurable": {"thread_id": initial_state["session_id"]}}
         response= graph.invoke(initial_state,config=config)
         print(response["response"])
-        # for event in graph.stream(initial_state,config=config, stream_mode= "values"):
-        #     event["response"]
-        
 
 if __name__ == "__main__":
 
