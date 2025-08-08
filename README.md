@@ -38,6 +38,18 @@ python redisChechpointing.py
 
 # Listen for triggers
 
+if trigger is not created 
+
+start cli
+```
+docker exec -it cache redis-cli
+```
+
+run 
+```
+redis-cli CONFIG SET notify-keyspace-events Exg
+```
+
 ```
 python listenttl.py
 ```
