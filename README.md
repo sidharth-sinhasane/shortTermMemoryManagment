@@ -19,6 +19,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+# create .env
+and add api keys
+
 
 # running old method
 ```
