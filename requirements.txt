@@ -1,0 +1,11 @@
+langgraph
+langchain
+python-dotenv
+langchain-ollama
+Ipython
+gradio
+langchain-openai
+langchain-ollama
+redis
+Ipython
+langchain-redis
