@@ -9,3 +9,6 @@ langchain-ollama
 redis
 Ipython
 langchain-redis
+langgraph-checkpoint-redis
+langchain-core
+pydantic
