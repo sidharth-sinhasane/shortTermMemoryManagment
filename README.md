@@ -26,7 +26,7 @@ python graph.py
 ```
 
 
-#run new method
+# run new method
 
 ```
 python redisChechpointing.py
