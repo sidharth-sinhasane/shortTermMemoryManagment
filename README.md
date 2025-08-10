@@ -1,7 +1,8 @@
 # running redis
 ```
 docker pull redis
-docker run --name cache -p 6379:6379 -d redis
+docker run -d --name redis-server -p 6379:6379 redis
+docker run -d --name redis-copy -p 6380:6379 redis
 
 ```
 
