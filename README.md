@@ -19,6 +19,9 @@ source venv/bin/activate
 pip install -r requirements.txt
 ```
 
+# create .env
+and add api keys
+
 
 # running old method
 ```
@@ -26,7 +29,7 @@ python graph.py
 ```
 
 
-#run new method
+# run new method
 
 ```
 python redisChechpointing.py
@@ -34,6 +37,18 @@ python redisChechpointing.py
 ```
 
 # Listen for triggers
+
+if trigger is not created 
+
+start cli
+```
+docker exec -it cache redis-cli
+```
+
+run 
+```
+redis-cli CONFIG SET notify-keyspace-events Exg
+```
 
 ```
 python listenttl.py
