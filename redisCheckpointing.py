@@ -70,13 +70,12 @@ def superviser_agent(state: GraphState)->GraphState:
         azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
         api_key=os.getenv("AZURE_OPENAI_API_KEY"),
         azure_deployment=os.getenv("AZURE_DEPLOYMENT_NAME"),
-        openai_api_version=os.getenv("AZURE_API_VERSION"),
-        checkpointer=checkpointer
+        openai_api_version=os.getenv("AZURE_API_VERSION")
     )
 
     agent= create_react_agent(model=llm,tools=[])
-    config = {"configurable": {"thread_id": state["session_id"]}}
-    response = agent.invoke({"messages":state["messages"]},config=config)
+
+    response = agent.invoke({"messages":state["messages"]})
     state["response"]=response["messages"][-1].content
     return state
 
@@ -87,13 +86,14 @@ graphBuilder.set_entry_point("superviser_agent")
 graphBuilder.add_node("superviser_agent",superviser_agent)
 graphBuilder.add_edge("superviser_agent",END)
 
-graph = graphBuilder.compile()
+graph = graphBuilder.compile(checkpointer=checkpointer)
 
 def main():
 
     while True:
         userinput=input("aks: ")
         inputs= [HumanMessage(content=userinput)]
+        config = {"configurable": {"thread_id": "9"}}
         initial_state = {
                 "session_id": "1",               
                 "user": {
@@ -116,7 +116,7 @@ def main():
             break
 
         
-        response= graph.invoke(initial_state)
+        response= graph.invoke(initial_state,config=config)
         print(response["response"])
 
 if __name__ == "__main__":
