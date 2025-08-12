@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 import os
 from langchain_core.messages import HumanMessage
 import gradio as gr
+from langchain_openai import AzureChatOpenAI
 
 load_dotenv(override=True)
 
@@ -59,11 +60,16 @@ class redisClient:
     def __init__(self):
         if self.redis == None:
             #self.redis=redis.StrictRedis(host="sandiskurl",port=0000, db=4 , decode_responses=True)
-            self.redis=redis.StrictRedis(host='localhost', port=6379,  decode_responses=True)
+            self.redis=redis.StrictRedis(host='localhost', port=6379,  decode_responses=True,)
 
 async def superviser_agent(state: GraphState)->GraphState:
 
-    llm= ChatOpenAI(model="gpt-4o-mini",api_key=os.getenv("OPENAI_API_KEY"))
+    llm = AzureChatOpenAI(
+        azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+        api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+        azure_deployment=os.getenv("AZURE_DEPLOYMENT_NAME"),
+        api_version=os.getenv("AZURE_API_VERSION")
+    )
 
     agent=create_react_agent(model=llm,tools=[])
 

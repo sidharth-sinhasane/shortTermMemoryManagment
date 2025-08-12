@@ -93,7 +93,6 @@ def main():
     while True:
         userinput=input("aks: ")
         inputs= [HumanMessage(content=userinput)]
-        config = {"configurable": {"thread_id": "9"}}
         initial_state = {
                 "session_id": "1",               
                 "user": {
@@ -112,6 +111,7 @@ def main():
                 "context": {},
                 "messages":inputs
             }
+        config = {"configurable": {"thread_id": initial_state["session_id"]}}
         if userinput == "exit":
             break
 
