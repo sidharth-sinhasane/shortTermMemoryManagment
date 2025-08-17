@@ -12,3 +12,6 @@ langchain-redis
 langgraph-checkpoint-redis
 langchain-core
 pydantic
+langgraph-checkpoint-postgres
+psycopg[binary]
+msgpack
